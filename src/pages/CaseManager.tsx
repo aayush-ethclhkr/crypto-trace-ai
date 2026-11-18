@@ -28,12 +28,12 @@ const DEFAULT_CASES: CaseRecord[] = [
     riskScore: 95,
     threatLevel: "CRITICAL",
     status: "UNDER_INVESTIGATION",
-    source: "NCRP Complaint #98214",
+    source: "Online Complaint #98214",
     notes: "Suspected Lazarus Group ransomware proceeds. High velocity split-transfers observed.",
     reportedAt: "2026-02-14 11:22:00",
   },
   {
-    id: "NCRP-2026-00128",
+    id: "CASE-2026-00128",
     wallet: "1FeexV6bAHb8ybZjqQMjJrcCrHGW9sb6uF",
     network: "Bitcoin",
     riskScore: 85,
@@ -44,13 +44,13 @@ const DEFAULT_CASES: CaseRecord[] = [
     reportedAt: "2026-02-17 09:40:15",
   },
   {
-    id: "SAHYOG-2026-7842",
+    id: "ALERT-2026-7842",
     wallet: "0x901bb9583b24d97e995513c6778dc6888ab6870e",
     network: "Ethereum",
     riskScore: 90,
     threatLevel: "CRITICAL",
     status: "OPEN",
-    source: "SAHYOG Inter-Agency Alert",
+    source: "Inter-Agency Alert",
     notes: "Tornado Cash relayer interaction flagged during darknet extortion probe.",
     reportedAt: "2026-02-18 04:15:20",
   },
@@ -76,7 +76,7 @@ export default function CaseManager() {
   const [newId, setNewId] = useState("");
   const [newWallet, setNewWallet] = useState("");
   const [newNetwork, setNewNetwork] = useState("Ethereum");
-  const [newSource, setNewSource] = useState("NCRP Portal Complaint");
+  const [newSource, setNewSource] = useState("Online Portal Complaint");
   const [newNotes, setNewNotes] = useState("");
 
   useEffect(() => {
@@ -338,7 +338,7 @@ export default function CaseManager() {
                   <Input
                     value={newId}
                     onChange={(e) => setNewId(e.target.value)}
-                    placeholder="e.g. NCRP-2026-11849"
+                    placeholder="e.g. CASE-2026-11849"
                     className="font-mono"
                     required
                   />
@@ -375,9 +375,9 @@ export default function CaseManager() {
                       onChange={(e) => setNewSource(e.target.value)}
                       className="h-10 w-full rounded-md border border-input bg-card px-2 text-xs"
                     >
-                      <option value="NCRP Portal">NCRP Portal</option>
-                      <option value="SAHYOG Alert">SAHYOG Alert</option>
-                      <option value="Manual LEA">Manual LEA</option>
+                      <option value="Online Portal">Online Portal</option>
+                      <option value="Alert System">Alert System</option>
+                      <option value="Manual Intake">Manual Intake</option>
                     </select>
                   </div>
                 </div>

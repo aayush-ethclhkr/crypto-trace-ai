@@ -2,15 +2,15 @@
 
 > Multi-Chain Blockchain Intelligence & VASP Attribution Forensics Suite
 
-**Smart India Hackathon 2026** | Problem Statement: SIH26182 (Primary) & SIH26183 (Related)  
-**Organization**: Ministry of Home Affairs (MHA) · Indian Cyber Crime Coordination Centre (I4C)  
-**Category**: Blockchain & Cybersecurity
+**College Mini Project** | Category: Blockchain & Cybersecurity  
+**Academic Year**: 2026  
+**License**: MIT License (Open Source)
 
 ---
 
 ## Overview
 
-CryptoTrace AI is a comprehensive cryptocurrency forensics and investigative intelligence platform designed for Law Enforcement Agencies (LEAs), cybercrime cells, and regulatory compliance analysts. The system provides automated multi-chain wallet analysis, sanctions screening, and evidence generation for cryptocurrency-related investigations.
+CryptoTrace AI is a comprehensive cryptocurrency forensics and investigative intelligence platform designed for blockchain analysis, cybercrime investigation, and regulatory compliance. The system provides automated multi-chain wallet analysis, sanctions screening, and evidence generation for cryptocurrency-related investigations.
 
 ### Key Capabilities
 
@@ -200,21 +200,21 @@ CryptoTrace-AI/
 
 ## Contributing
 
-This project is developed for Smart India Hackathon 2026. For collaboration inquiries, please contact the project maintainers.
+This is an open-source college mini project. Contributions, issues, and feature requests are welcome!
 
 ---
 
 ## License
 
-Internal Development & Smart India Hackathon Submission — All Rights Reserved
+MIT License - Open Source
 
 ---
 
 ## Acknowledgments
 
-- Ministry of Home Affairs (MHA)
-- Indian Cyber Crime Coordination Centre (I4C)
-- Smart India Hackathon 2026 Initiative
+- Open-source community for libraries and frameworks
+- Blockchain explorer API providers (Etherscan, TronGrid)
+- Academic mentors and project guides
 
 ---
 

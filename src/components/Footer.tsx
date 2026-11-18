@@ -16,7 +16,7 @@ export default function Footer() {
               Specialized cryptocurrency tracing, high-risk wallet identification, and VASP attribution engine designed for Law Enforcement Agencies (LEAs) and cybercrime investigators.
             </p>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary/10 text-primary font-mono text-[11px] border border-primary/20">
-              <CheckCircle2 className="h-3 w-3" /> SIH26182 &amp; SIH26183 Aligned
+              <CheckCircle2 className="h-3 w-3" /> Blockchain Forensics Platform
             </div>
           </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
               <li><Link to="/" className="hover:text-primary transition-colors">Forensic Trace Engine</Link></li>
               <li><Link to="/cases" className="hover:text-primary transition-colors">Case Management &amp; Dossiers</Link></li>
               <li><Link to="/registry" className="hover:text-primary transition-colors">OFAC Sanctions &amp; Darknet Registry</Link></li>
-              <li><Link to="/alignment" className="hover:text-primary transition-colors">SIH Alignment &amp; Workflow</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">About Project</Link></li>
             </ul>
           </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
           <div>
-            &copy; {new Date().getFullYear()} CryptoTrace AI. Built for SIH Problem Statement SIH26182 (Ministry of Home Affairs / I4C).
+            &copy; {new Date().getFullYear()} CryptoTrace AI. College Mini Project - Blockchain & Cybersecurity.
           </div>
           <div className="flex gap-4">
             <span className="font-mono text-primary">v1.0.0-standalone</span>

@@ -59,7 +59,7 @@ interface WalletResult {
   scannedAt: string;
 }
 
-type IntakeSource = "NCRP" | "SAHYOG" | "LEA_MANUAL";
+type IntakeSource = "PORTAL" | "ALERT" | "MANUAL";
 
 interface CaseContext {
   complaintId: string;
@@ -491,7 +491,7 @@ export default function CryptoTrace() {
   const [searchParams] = useSearchParams();
   const [input, setInput]           = useState("");
   const [complaintId, setComplaintId] = useState("");
-  const [intakeSource, setIntakeSource] = useState<IntakeSource>("NCRP");
+  const [intakeSource, setIntakeSource] = useState<IntakeSource>("PORTAL");
   const [scanning, setScanning]     = useState(false);
   const [progress, setProgress]     = useState("");
   const [result, setResult]         = useState<WalletResult | null>(null);
@@ -562,7 +562,7 @@ export default function CryptoTrace() {
     doc.setFontSize(8.5);
     doc.setTextColor(160, 175, 195);
     doc.setFont("helvetica", "normal");
-    doc.text("LAW ENFORCEMENT & VASP ATTRIBUTION REPORT | SIH26182 ALIGNED", 14, 23);
+    doc.text("LAW ENFORCEMENT & VASP ATTRIBUTION REPORT | BLOCKCHAIN FORENSICS", 14, 23);
     doc.text(`Generated: ${new Date().toUTCString()}`, 14, 29);
 
     doc.setFontSize(11);
@@ -646,7 +646,7 @@ export default function CryptoTrace() {
     if (!result || !caseContext || !attribution) return;
     const evidencePackage = {
       schema: "CryptoTrace AI Forensic Evidence Package v1.0",
-      problemStatements: ["SIH26182", "SIH26183"],
+      projectType: "Blockchain Forensics Platform",
       case: caseContext,
       subjectWallet: result.address,
       network: result.network,
@@ -689,7 +689,7 @@ export default function CryptoTrace() {
         {/* ── Hero ─────────────────────────────────────────────────────────── */}
         <ScrollReveal>
           <div className="text-center mb-8">
-            <p className="text-xs font-mono text-primary uppercase tracking-widest mb-3">SIH26182 · SIH26183 · BLOCKCHAIN &amp; CYBERSECURITY</p>
+            <p className="text-xs font-mono text-primary uppercase tracking-widest mb-3">BLOCKCHAIN FORENSICS & INVESTIGATION PLATFORM</p>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="text-primary">Crypto</span>Trace VASP
             </h1>
@@ -720,7 +720,7 @@ export default function CryptoTrace() {
                   <Input
                     value={complaintId}
                     onChange={e => setComplaintId(e.target.value)}
-                    placeholder="e.g. NCRP-2026-00128"
+                    placeholder="e.g. CASE-2026-00128"
                     className="font-mono text-sm"
                   />
                 </div>
@@ -731,9 +731,9 @@ export default function CryptoTrace() {
                     onChange={e => setIntakeSource(e.target.value as IntakeSource)}
                     className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                   >
-                    <option value="NCRP">NCRP complaint</option>
-                    <option value="SAHYOG">SAHYOG request</option>
-                    <option value="LEA_MANUAL">Manual LEA intake</option>
+                    <option value="PORTAL">Online Portal</option>
+                    <option value="ALERT">Alert System</option>
+                    <option value="MANUAL">Manual Intake</option>
                   </select>
                 </div>
               </div>
@@ -1077,7 +1077,7 @@ export default function CryptoTrace() {
                 <div className="flex items-start gap-3">
                   <Info className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm font-semibold text-blue-400 mb-2">SIH Investigation Workflow</p>
+                    <p className="text-sm font-semibold text-blue-400 mb-2">Investigation Workflow</p>
                     <ul className="space-y-1 text-sm text-blue-300/80">
                       <li>1. Capture the victim complaint reference and suspect wallet.</li>
                       <li>2. Detect the blockchain and collect available transaction evidence.</li>
@@ -1107,7 +1107,7 @@ export default function CryptoTrace() {
           <ScrollReveal delay={120}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-2">
               {[
-                { icon: FileText,    title: "Complaint Intake",   desc: "Links the suspect wallet to an NCRP, SAHYOG, or manual law-enforcement case reference." },
+                { icon: FileText,    title: "Complaint Intake",   desc: "Links the suspect wallet to an investigation case reference." },
                 { icon: Activity,    title: "Fund-Flow Evidence", desc: "Collects available transaction history and identifies recent counterparties." },
                 { icon: Building2,   title: "VASP Attribution",   desc: "Reports an entity match only when the available evidence supports it." },
                 { icon: ShieldCheck, title: "Evidence Export",    desc: "Creates a structured case package with risk findings, transactions, and limitations." },

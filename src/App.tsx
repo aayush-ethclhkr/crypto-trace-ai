@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import TraceEngine from "@/pages/TraceEngine";
 import CaseManager from "@/pages/CaseManager";
 import SanctionsRegistry from "@/pages/SanctionsRegistry";
-import SihAlignment from "@/pages/SihAlignment";
+import About from "@/pages/About";
 
 export default function App() {
   return (
@@ -16,7 +16,7 @@ export default function App() {
             <Route path="/" element={<TraceEngine />} />
             <Route path="/cases" element={<CaseManager />} />
             <Route path="/registry" element={<SanctionsRegistry />} />
-            <Route path="/alignment" element={<SihAlignment />} />
+            <Route path="/about" element={<About />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

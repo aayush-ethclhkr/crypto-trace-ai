@@ -2,7 +2,7 @@
 title CryptoTrace AI - Forensics CLI & Database Engine
 echo ========================================================
 echo   CRYPTOTRACE AI - FORENSIC CLI & DATABASE ENGINE
-echo   Launching Rich Terminal Interface (SIH-26182)
+echo   Launching Rich Terminal Interface
 echo ========================================================
 echo.
 cd /d "%~dp0\engine"

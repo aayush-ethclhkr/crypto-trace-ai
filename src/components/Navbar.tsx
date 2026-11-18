@@ -10,7 +10,7 @@ export default function Navbar() {
     { to: "/", label: "Trace Engine" },
     { to: "/cases", label: "Case Manager" },
     { to: "/registry", label: "Sanctions Directory" },
-    { to: "/alignment", label: "SIH-26182 Alignment" },
+    { to: "/about", label: "About Project" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export default function Navbar() {
                 Crypto<span className="text-primary text-glow">Trace</span> AI
               </span>
               <span className="text-[10px] font-mono uppercase bg-primary/15 text-primary border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                SIH26182
+                LIVE
               </span>
             </div>
             <span className="text-[10px] font-mono text-muted-foreground tracking-wider">

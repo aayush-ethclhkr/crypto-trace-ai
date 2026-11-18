@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "CryptoTrace AI — Multi-Chain Blockchain Intelligence & VASP Attribution Forensics Suite (SIH26182 / SIH26183)",
+  "description": "CryptoTrace AI — Multi-Chain Blockchain Intelligence & VASP Attribution Forensics Suite",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

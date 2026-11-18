@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Shield, Bitcoin, Terminal, Menu, X, ExternalLink, Activity } from "lucide-react";
+import { Shield, Bitcoin, Terminal, Menu, X, ExternalLink, Activity, Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const { pathname } = useLocation();
+
+  // Initialize theme from localStorage or default to dark
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+  }, []);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
 
   const navLinks = [
     { to: "/", label: "Trace Engine" },
@@ -58,7 +77,7 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right Info: Live chains & CLI indicator */}
+        {/* Right Info: Live chains & CLI indicator & Theme Toggle */}
         <div className="hidden lg:flex items-center gap-3">
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -68,16 +87,44 @@ export default function Navbar() {
             <Terminal className="h-3.5 w-3.5 text-primary" />
             <span>python startup.py</span>
           </div>
+          
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-card border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </button>
         </div>
 
         {/* Mobile menu trigger */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground"
-          aria-label="Toggle Menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          {/* Theme Toggle for Mobile */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </button>
+          
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground"
+            aria-label="Toggle Menu"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}
@@ -103,6 +150,22 @@ export default function Navbar() {
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Multi-Chain Live Endpoints Connected</span>
             </div>
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-card border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all text-sm"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Sun className="h-4 w-4" />
+                  <span>Switch to Light Mode</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="h-4 w-4" />
+                  <span>Switch to Dark Mode</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
       )}

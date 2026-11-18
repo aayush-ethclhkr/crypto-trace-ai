@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ScrollReveal from "@/components/ScrollReveal";
+import apiService from "@/services/api.service";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 type Network = "Ethereum" | "Bitcoin" | "Tron" | "Litecoin" | "Dogecoin" | "XRP" | "Cardano" | "Unknown";
@@ -273,6 +274,56 @@ async function fetchTronBalance(address: string): Promise<number | null> {
 // ── Main analysis orchestrator ────────────────────────────────────────────────
 async function analyzeWallet(address: string, onProgress: (msg: string) => void): Promise<WalletResult> {
   const trimmed = address.trim();
+  
+  // Try API first
+  try {
+    onProgress("Connecting to analysis engine...");
+    const apiResponse = await apiService.analyzeWallet(trimmed);
+    
+    if (apiResponse.success && apiResponse.data) {
+      onProgress("Analysis complete");
+      const data = apiResponse.data;
+      
+      // Transform API response to WalletResult format
+      const network = data.network as Network;
+      const meta = NETWORK_META[network];
+      
+      return {
+        address: data.address,
+        network: network,
+        symbol: data.symbol || meta.symbol,
+        balance: data.balance,
+        status: data.transactionCount > 0 ? "ACTIVE" : "INACTIVE",
+        totalTx: data.transactionCount,
+        incoming: 0, // API doesn't provide this yet
+        outgoing: 0, // API doesn't provide this yet
+        totalReceived: 0, // API doesn't provide this yet
+        totalSent: 0, // API doesn't provide this yet
+        firstActivity: "N/A",
+        lastActivity: "N/A",
+        walletAge: 0,
+        recentTxs: data.transactions?.map((tx: any) => ({
+          hash: tx.hash,
+          value: tx.value,
+          date: tx.date,
+          direction: tx.direction,
+          counterparty: tx.counterparty
+        })) || [],
+        riskScore: data.riskScore,
+        threatLevel: data.riskLevel?.toUpperCase() as ThreatLevel || "LOW",
+        riskLevel: data.riskScore < 25 ? "SAFE" : data.riskScore < 60 ? "WARNING" : "DANGER",
+        registryHit: data.registryHit || { found: false },
+        riskFactors: data.riskFactors || [],
+        explorerUrl: meta.explorerBase + trimmed,
+        scannedAt: new Date().toISOString(),
+      };
+    }
+  } catch (apiError) {
+    console.warn("API call failed, falling back to client-side analysis:", apiError);
+    onProgress("API unavailable, using direct blockchain analysis...");
+  }
+  
+  // Fallback to client-side analysis
   const network = detectNetwork(trimmed);
 
   if (network === "Unknown") {

@@ -9,7 +9,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "engine": "cd engine && python startup.py",
-    "cli": "cd engine && python startup.py"
+    "cli": "cd engine && python startup.py",
+    "api": "cd api && uvicorn main:app --reload --host 0.0.0.0 --port 8000",
+    "api:prod": "cd api && uvicorn main:app --host 0.0.0.0 --port $PORT",
+    "dev:fullstack": "concurrently \"bun run dev\" \"bun run api\"",
+    "setup:api": "cd api && pip install -r requirements.txt && cd ../engine && pip install -r requirements.txt"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

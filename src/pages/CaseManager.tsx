@@ -6,6 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ScrollReveal from "@/components/ScrollReveal";
+import apiService from "@/services/api.service";
 
 interface CaseRecord {
   id: string;
@@ -79,17 +80,29 @@ export default function CaseManager() {
   const [newNotes, setNewNotes] = useState("");
 
   useEffect(() => {
-    const saved = localStorage.getItem("cryptotrace_cases_all");
-    if (saved) {
-      try {
-        setCases(JSON.parse(saved));
-      } catch {
-        setCases(DEFAULT_CASES);
+    // Try to load cases from API first
+    const loadCases = async () => {
+      const apiResponse = await apiService.listCases();
+      if (apiResponse.success && apiResponse.data) {
+        setCases(apiResponse.data);
+        return;
       }
-    } else {
-      setCases(DEFAULT_CASES);
-      localStorage.setItem("cryptotrace_cases_all", JSON.stringify(DEFAULT_CASES));
-    }
+      
+      // Fallback to localStorage
+      const saved = localStorage.getItem("cryptotrace_cases_all");
+      if (saved) {
+        try {
+          setCases(JSON.parse(saved));
+        } catch {
+          setCases(DEFAULT_CASES);
+        }
+      } else {
+        setCases(DEFAULT_CASES);
+        localStorage.setItem("cryptotrace_cases_all", JSON.stringify(DEFAULT_CASES));
+      }
+    };
+    
+    loadCases();
   }, []);
 
   const saveCases = (updated: CaseRecord[]) => {

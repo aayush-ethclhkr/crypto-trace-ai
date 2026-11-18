@@ -1,8 +1,8 @@
 # CryptoTrace AI — Multi-Chain Blockchain Intelligence & VASP Attribution Suite
 
-> **Aligned with Smart India Hackathon (SIH 2026)**
-> **Problem Statement ID:** `SIH26182` (Primary) & `SIH26183` (Related)
-> **Organization:** Ministry of Home Affairs (MHA) · Indian Cyber Crime Coordination Centre (I4C)
+> **Aligned with Smart India Hackathon (SIH 2026)**  
+> **Problem Statement ID:** `SIH26182` (Primary) & `SIH26183` (Related)  
+> **Organization:** Ministry of Home Affairs (MHA) · Indian Cyber Crime Coordination Centre (I4C)  
 > **Theme:** Blockchain & Cybersecurity
 
 ---
@@ -14,19 +14,21 @@
 When an online extortion or crypto theft complaint is received on the **NCRP** (National Cyber Crime Reporting Portal) or via **SAHYOG**, investigators often possess only a suspect wallet address without knowing which Virtual Asset Service Provider (VASP / Exchange) received the proceeds.
 
 CryptoTrace AI bridges this gap through:
-1. **Automated Multi-Chain Triage** (Ethereum, Bitcoin, Tron, Litecoin, Dogecoin, XRP, Cardano).
-2. **Global Sanctions & Darknet Correlation** (OFAC SDN List, DPRK Lazarus Group, Tornado Cash relayers, ransomware depots).
-3. **Multi-Signal Risk Engine** (Holding tiers, transaction frequency, velocity, and case linkages).
-4. **VASP Legal Attribution Model** (Exact evidence-backed entity matches vs. rigorous inconclusive reporting).
-5. **Court-Ready Evidentiary Output** (Cryptographically structured JSON evidence packages and signed PDF forensic dossiers).
+
+1. **Automated Multi-Chain Triage** (Ethereum, Bitcoin, Tron, Litecoin, Dogecoin, XRP, Cardano)
+2. **Global Sanctions & Darknet Correlation** (OFAC SDN List, DPRK Lazarus Group, Tornado Cash relayers, ransomware depots)
+3. **Multi-Signal Risk Engine** (Holding tiers, transaction frequency, velocity, and case linkages)
+4. **VASP Legal Attribution Model** (Exact evidence-backed entity matches vs. rigorous inconclusive reporting)
+5. **Court-Ready Evidentiary Output** (Cryptographically structured JSON evidence packages and signed PDF forensic dossiers)
 
 ---
 
 ## 🏗 System Architecture & Project Layout
 
 CryptoTrace AI is delivered as an integrated dual-mode system:
-- **Web Application:** High-performance, reactive UI built with Vite, React 18, TypeScript, and Tailwind CSS.
-- **Forensic CLI & Engine:** Rich Python terminal suite backed by SQLite databases for offline evidence tracking.
+
+- **Web Application:** High-performance, reactive UI built with Vite, React 18, TypeScript, and Tailwind CSS
+- **Forensic CLI & Engine:** Rich Python terminal suite backed by SQLite databases for offline evidence tracking
 
 ```
 CryptoTrace-AI/
@@ -105,6 +107,7 @@ bun run dev
 # Or using NPM
 npm run dev
 ```
+
 Open **`http://localhost:5173`** in your browser.
 
 ---
@@ -117,7 +120,6 @@ Double-click `run_engine.bat` in the root folder.
 #### Option B: Terminal Command
 ```bash
 cd engine
-# Activate the pre-configured virtual environment
 .\venv\Scripts\python.exe startup.py
 ```
 
@@ -137,6 +139,7 @@ The interactive terminal menu provides:
 ## 🔑 Environment Configuration
 
 Create a `.env` file in the project root:
+
 ```env
 # Etherscan API Key (https://etherscan.io/apis)
 VITE_ETHERSCAN_API_KEY=your_etherscan_key_here
@@ -166,13 +169,13 @@ To evaluate the system during presentation or triage:
 ## ⚖️ Statutory Restraint & Lawful Boundary
 
 Public blockchain consensus data reflects pseudo-anonymous transfers between cryptographic key pairs. CryptoTrace AI enforces strict evidentiary discipline:
-- **No False Positives:** The system will never attribute an address to an exchange without verified cluster match data.
-- **Inconclusive Transparency:** Unhosted wallets are clearly identified as `PUBLIC DATA INCONCLUSIVE` with guidance for Section 91 CrPC notice dispatch.
-- **Audit Trail:** Every generated evidence package records timestamps, consensus state, and officer signature blocks for judicial submission.
+
+- **No False Positives:** The system will never attribute an address to an exchange without verified cluster match data
+- **Inconclusive Transparency:** Unhosted wallets are clearly identified as `PUBLIC DATA INCONCLUSIVE` with guidance for Section 91 CrPC notice dispatch
+- **Audit Trail:** Every generated evidence package records timestamps, consensus state, and officer signature blocks for judicial submission
 
 ---
 
 ## 📄 License
+
 Internal Development & Smart India Hackathon Submission — All Rights Reserved.
-#   c r y p t o - t r a c e - a i  
- 

@@ -2,14 +2,14 @@ services:
   - type: web
     name: cryptotrace-api
     env: python
-    buildCommand: pip install -r api/requirements.txt && pip install -r engine/requirements.txt
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
     startCommand: cd api && uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: ETHERSCAN_API_KEY
         sync: false
       - key: TRONGRID_API_KEY
-        sync: false
-      - key: BLOCKFROST_API_KEY
         sync: false
       - key: PORT
         value: 8000
